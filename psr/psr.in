@@ -1,7 +1,7 @@
 PSR INPUT DATA
 
-100.                            ! Integration time
-1.E-2                           ! Time step
-0                               ! Kernel update on/off
-1                               ! Print self-preserving distribution
-100                             ! Interval for write-up
+1.                              ! Integration time (total) -> int_time
+1.E-5                           ! Time step -> dt
+0                               ! Kernel update on/off -> agg_kernel_update
+0                               ! Print self-preserving distribution -> i_writesp
+1                               ! Interval for write-up -> n_write

@@ -1,25 +1,25 @@
 PBE INPUT DATA
 
-5                               ! Aggregation kernel
-1.                              ! Aggregation kernel constant
-0                               ! Nucleation range (0 for no nucleation)
-0.                              ! Nucleation rate
-0                               ! Growth model
-0.1                             ! Growth rate
-1.                              ! Growth exponent (for power-law model)
-0                               ! Mass-conservative growth discretisation
-0.                              ! Fragmentation rate constant
-3                               ! Order of Gaussian quadrature (for fragmentation)
-1                               ! Grid type
-80                              ! Number of grid points
-0.05                            ! Minimum size in grid
-1.E4                            ! Maximum size in grid
-1.                              ! Volume of nuclei
-2                               ! Initial distribution
-1                               ! First non-zero interval for top-hat distribution
-1                               ! Second non-zero interval for top-hat distribution
-1.                              ! Value for initialising number density
-1                               ! Integration method
+0                               ! Aggregation kernel -> agg_kernel
+1.                              ! Aggregation kernel constant -> agg_kernel_const
+1                               ! Nucleation range (0 for no nucleation) -> max_nuc
+1.                              ! Nucleation rate -> nuc1
+1                               ! Growth model -> growth_function
+1                               ! Growth rate -> g_coeff1
+1.                              ! Growth exponent (for power-law model) -> g_coeff2
+0                               ! Mass-conservative growth discretisation -> i_gm
+0.                              ! Fragmentation rate constant -> break_const
+3                               ! Order of Gaussian quadrature (for fragmentation) -> order_of_gq
+2                               ! Grid type -> grid_type
+2000                            ! Number of grid points -> m
+0                               ! Minimum size in grid -> grid_lb
+2                               ! Maximum size in grid -> grid_rb
+1.                              ! Volume of nuclei -> v0
+1                               ! Initial distribution -> initdis
+1                               ! First non-zero interval for top-hat distribution -> n_th1
+200                             ! Second non-zero interval for top-hat distribution -> n_th2
+1.                              ! Value for initialising number density -> N0
+1                               ! Integration method -> solver_pbe
 
 Aggregation kernels:
 0. No aggregation
