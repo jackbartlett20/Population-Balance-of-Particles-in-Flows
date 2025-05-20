@@ -6,7 +6,7 @@ PBE INPUT DATA
 0.                              ! Nucleation rate
 0                               ! Growth model
 0.1                             ! Growth rate
-1.                              ! Growth exponent (power-law model)
+1.                              ! Growth exponent (for power-law model)
 0                               ! Mass-conservative growth discretisation
 0.                              ! Fragmentation rate constant
 3                               ! Order of Gaussian quadrature (for fragmentation)
