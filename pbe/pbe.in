@@ -2,9 +2,9 @@ PBE INPUT DATA
 
 0                               ! Aggregation kernel -> agg_kernel
 1.                              ! Aggregation kernel constant -> agg_kernel_const
-1                               ! Nucleation range (0 for no nucleation) -> max_nuc
+1000                               ! Nucleation range (0 for no nucleation) -> max_nuc
 1.                              ! Nucleation rate -> nuc1
-1                               ! Growth model -> growth_function
+0                               ! Growth model -> growth_function
 1                               ! Growth rate -> g_coeff1
 1.                              ! Growth exponent (for power-law model) -> g_coeff2
 0                               ! Mass-conservative growth discretisation -> i_gm
@@ -16,8 +16,8 @@ PBE INPUT DATA
 2                               ! Maximum size in grid -> grid_rb
 1.                              ! Volume of nuclei -> v0
 1                               ! Initial distribution -> initdis
-1                               ! First non-zero interval for top-hat distribution -> n_th1
-200                             ! Second non-zero interval for top-hat distribution -> n_th2
+900                             ! First non-zero interval for top-hat distribution -> n_th1
+1100                            ! Second non-zero interval for top-hat distribution -> n_th2
 1.                              ! Value for initialising number density -> N0
 1                               ! Integration method -> solver_pbe
 
@@ -49,7 +49,7 @@ Initial distributions:
 
 Nucleation range:
 - 0 for no nucleation
-- Range of intervals where nucleation occurs
+- Range of intervals where nucleation occurs (value of n means nucleation will occur in smallest n intervals)
 
 Integration methods:
 1. Explicit Euler

@@ -539,14 +539,14 @@ do i=1,m
     nitemp(i) = ni(i)
   end if
 end do
-open(99,file='pbe/psd.out')
+open(99,file='pbe/out/psd.out')
 do i=1,m
   write(99,1001) v_m(i),(6.D0/3.14159*v_m(i))**(1.D0/3.D0),nitemp(i), &
   & nitemp(i)*dv(i)/moment(0),v_m(i)*nitemp(i),v_m(i)*nitemp(i)*dv(i)/moment(1)
 end do
 close(99)
 if (i_writesp==1) then
-  open(99,file='pbe/psd_sp.out')
+  open(99,file='pbe/out/psd_sp.out')
   do i=1,m
     eta(i) = moment(0)*v_m(i)/moment(1)
     psi(i) = nitemp(i)*moment(1)/moment(0)**2
@@ -570,7 +570,7 @@ subroutine pbe_output_many(ni,i_writesp,n_files)
 !**********************************************************************************************
 !
 ! Writes PSD and Self-Preserving distribution if required
-! Modified version of pbe_output which writes to a new file at each write-up interval
+! Modified version of pbe_output which writes to a new file at each write-up
 !
 ! By Jack Bartlett (21/05/2025)
 !
@@ -606,7 +606,7 @@ do i=1,m
 end do
 
 write(n_files_str, '(I0)') n_files ! Convert n_files integer to string for filename
-filename = "pbe/psd" // TRIM(n_files_str) // ".out"
+filename = "pbe/out/psd" // TRIM(n_files_str) // ".out"
 open(99,file=filename)
 do i=1,m
   write(99,1001) v_m(i),(6.D0/3.14159*v_m(i))**(1.D0/3.D0),nitemp(i), &
@@ -615,7 +615,7 @@ end do
 close(99)
 
 if (i_writesp==1) then
-  open(99,file='pbe/psd_sp.out')
+  open(99,file='pbe/out/psd_sp.out')
   do i=1,m
     eta(i) = moment(0)*v_m(i)/moment(1)
     psi(i) = nitemp(i)*moment(1)/moment(0)**2

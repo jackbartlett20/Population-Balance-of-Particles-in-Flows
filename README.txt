@@ -41,7 +41,7 @@ Choose the desired problem in the problem.in file. Options:
 Input files are in directories pbe and psr. Output is in the following files in directory pbe:
 psd.out - particle size distribution (columns: volume at midpoint of interval, equivalent diameter, number density, proportion of total number in interval, volume density of particles, proportion of total volume in interval)
 psd_analytical.out - analytical solution for selected cases
-psd_sp.out - self-preserving size distribution for Brownian aggregation
+psd_sp.out - self-preserving size distribution for Brownian aggregation (columns: eta, psi)
 
 The code is executed with `./cpmod`.
 

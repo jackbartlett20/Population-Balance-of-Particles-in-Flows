@@ -94,7 +94,7 @@ write(*,*) 'Mean size of final distribution:',meansize
 call pbe_output(ni,i_writesp)
 
 ! Calculate and write analytical solution
-open(99,file='pbe/psd_analytical.out')
+open(99,file='pbe/out/psd_analytical.out')
 tau = agg_kernel_const*N0*int_time
 do i=1,m
   nia(i) = agg_kernel_const*(4.*N0/(tau+2.)**2)*exp((-v_m(i)/vmean_init)*(2./(tau+2.)))
@@ -294,7 +294,7 @@ write(*,*) 'Mean size of final distribution:',meansize
 call pbe_output(ni,i_writesp)
 
 ! Calculate and write analytical solution
-open(99,file='pbe/psd_analytical.out')
+open(99,file='pbe/out/psd_analytical.out')
 m0 = 2.D0 * N0 / (2.D0 + agg_kernel_const * N0 * int_time)
 m1 = N0 * vmean_init * exp(g_coeff1 * int_time)
 do i=1,m
@@ -478,7 +478,7 @@ write(*,*) 'Mean size of final distribution:',meansize
 call pbe_output(ni,i_writesp)
 
 ! Calculate and write analytical solution
-open(99,file='pbe/psd_analytical.out')
+open(99,file='pbe/out/psd_analytical.out')
 do i=1,m
   nia(i) = (1+int_time)**2*exp(-v_m(i)*(1+int_time))
   if (abs(nia(i))<1.D-16) then
