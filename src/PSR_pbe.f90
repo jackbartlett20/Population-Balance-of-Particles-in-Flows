@@ -46,7 +46,7 @@ close(30)
 ! Initialise PSR integration
 n_steps = int_time/dt
 current_time= 0.D0
-i_write = 0
+i_write = 1
 n_files = 0
 
 !----------------------------------------------------------------------------------------------
