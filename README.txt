@@ -38,7 +38,7 @@ Choose the desired problem in the problem.in file. Options:
 6. Uniform binary fragmentation
 7. Discrete PBE - aggregation with the Brownian kernel
 
-Input files are in directories pbe and psr. Output is in the following files in directory pbe:
+Input files are in directories pbe and psr. Output is in the following files in directory pbe/out/:
 psd.out - particle size distribution (columns: volume at midpoint of interval, equivalent diameter, number density, proportion of total number in interval, volume density of particles, proportion of total volume in interval)
 psd_analytical.out - analytical solution for selected cases
 psd_sp.out - self-preserving size distribution for Brownian aggregation (columns: eta, psi)
