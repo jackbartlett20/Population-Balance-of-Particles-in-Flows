@@ -23,7 +23,7 @@ Anxiong Liu
 Binxuan Sun
 Daniel O’Sullivan
 
-Compiling of the code:
+Compiling the code:
 
 The code can be compiled by running `make -f makefile` in directory compile which creates the file cpmod. Options are offered for the gfortran compiler, either debug or release (optimised).
 
@@ -45,7 +45,7 @@ psd_sp.out - self-preserving size distribution for Brownian aggregation
 
 The code is executed with `./cpmod`.
 
-Testing of the code:
+Testing the code:
 
 Sample plots are provided for the test cases. To reproduce these plots, run the corresponding test case by selecting its option in the problem.in file.
 

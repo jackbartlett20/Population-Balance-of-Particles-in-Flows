@@ -506,7 +506,7 @@ subroutine pbe_output(ni,i_writesp)
 
 !**********************************************************************************************
 !
-! Calculation of zeroth and first moments
+! Writes PSD and Self-Preserving distribution if required
 !
 ! By Stelios Rigopoulos
 ! Modified 06/05/2017
@@ -558,6 +558,75 @@ end if
 1002 format(2E20.10)
 
 end subroutine pbe_output
+
+!**********************************************************************************************
+
+
+
+!**********************************************************************************************
+
+subroutine pbe_output_many(ni,i_writesp,n_files)
+
+!**********************************************************************************************
+!
+! Writes PSD and Self-Preserving distribution if required
+! Modified version of pbe_output which writes to a new file at each write-up interval
+!
+! By Jack Bartlett (21/05/2025)
+!
+!**********************************************************************************************
+
+use pbe_mod
+
+implicit none
+
+double precision, dimension(m), intent(in) :: ni
+integer, intent(in) :: i_writesp
+integer, intent(in) :: n_files
+character(len=10) :: n_files_str
+character(len=20) :: filename
+
+double precision :: nitemp(m),eta(m),psi(m)
+double precision, dimension(0:1) :: moment
+
+double precision meansize
+
+integer i
+
+!----------------------------------------------------------------------------------------------
+
+call pbe_moments(ni,moment,meansize)
+
+do i=1,m
+  if (abs(ni(i))<1.D-16) then
+    nitemp(i) = 0.D0
+  else
+    nitemp(i) = ni(i)
+  end if
+end do
+
+write(n_files_str, '(I0)') n_files ! Convert n_files integer to string for filename
+filename = "pbe/psd" // TRIM(n_files_str) // ".out"
+open(99,file=filename)
+do i=1,m
+  write(99,1001) v_m(i),(6.D0/3.14159*v_m(i))**(1.D0/3.D0),nitemp(i), &
+  & nitemp(i)*dv(i)/moment(0),v_m(i)*nitemp(i),v_m(i)*nitemp(i)*dv(i)/moment(1)
+end do
+close(99)
+
+if (i_writesp==1) then
+  open(99,file='pbe/psd_sp.out')
+  do i=1,m
+    eta(i) = moment(0)*v_m(i)/moment(1)
+    psi(i) = nitemp(i)*moment(1)/moment(0)**2
+    write(99,1002) eta(i),psi(i)
+  end do
+end if
+
+1001 format(6E20.10)
+1002 format(2E20.10)
+
+end subroutine pbe_output_many
 
 !**********************************************************************************************
 

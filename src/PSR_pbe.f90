@@ -7,6 +7,7 @@ subroutine psr_pbe()
 ! Perfectly stirred reactor for the homogeneous PBE
 ! Stelios Rigopoulos (06/05/2017)
 ! Modified 25/06/2020
+! Modified 21/05/2025 by Jack Bartlett to add pbe_output_many
 !
 !**********************************************************************************************
 
@@ -17,7 +18,7 @@ double precision, allocatable :: ni(:)
 double precision moment(0:1)
 double precision int_time,tin,current_time,meansize,dt
 
-integer i,i_step,n_steps,iflag,flowflag,nin,i_write,n_write,i_writesp
+integer i,i_step,n_steps,iflag,flowflag,nin,i_write,n_write,i_writesp,n_files
 integer agg_kernel_update,n_pbe_grid
 
 !**********************************************************************************************
@@ -46,6 +47,7 @@ close(30)
 n_steps = int_time/dt
 current_time= 0.D0
 i_write = 0
+n_files = 0
 
 !----------------------------------------------------------------------------------------------
 
@@ -76,7 +78,8 @@ do i_step = 1,n_steps
   ! Write PSD
   if ((i_write==n_write).or.(i_step==n_steps)) then
     i_write = 0
-    call pbe_output(ni,i_writesp)
+    call pbe_output_many(ni,i_writesp,n_files)
+    n_files = n_files + 1
   end if
   i_write = i_write + 1
 
