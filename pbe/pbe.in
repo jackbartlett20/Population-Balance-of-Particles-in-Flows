@@ -10,11 +10,11 @@ PBE INPUT DATA
 0                               ! Mass-conservative growth discretisation -> i_gm
 0.                              ! Fragmentation rate constant -> break_const
 3                               ! Order of Gaussian quadrature (for fragmentation) -> order_of_gq
-2                               ! Grid type -> grid_type
-2000                            ! Number of grid points -> m
-0                               ! Minimum size in grid -> grid_lb
-2                               ! Maximum size in grid -> grid_rb
-1.                              ! Volume of nuclei -> v0
+1                               ! Grid type -> grid_type
+1000                            ! Number of grid points -> m
+0.001                               ! Minimum size in grid (must be >0 for geometric grid) -> grid_lb
+1                               ! Maximum size in grid -> grid_rb
+0.1                              ! Volume of nuclei -> v0
 1                               ! Initial distribution -> initdis
 900                             ! First non-zero interval for top-hat distribution -> n_th1
 1100                            ! Second non-zero interval for top-hat distribution -> n_th2

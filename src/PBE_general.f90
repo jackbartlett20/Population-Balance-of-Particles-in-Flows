@@ -316,14 +316,26 @@ allocate(v(0:m),dv(m),v_m(m),nuc(m))
 if (grid_type==1) then
 
   !Option 1: geometric grid
+  if (grid_lb==0) then
+    write(*,*) "Right grid boundary must be greater than zero for geometric grid"
+    stop
+  end if
+  alpha = exp(1./m * log(grid_rb/grid_lb)) ! Calculates geometric ratio
   v(0) = grid_lb
-  v(1) = v0 + (v0 - grid_lb)
-  v1 = v(1) - grid_lb
-  v2 = grid_rb - grid_lb
-  call inc_ratio(v1,v2,m,alpha)
-  do i=2,m
-    v(i) = v(0)+(v(1)-v(0))*(1-alpha**real(i))/(1-alpha)
+  do i=1,m
+    v(i) = v(i-1) * alpha
   end do
+
+  !Previous solution:
+  !v(0) = grid_lb
+  !v(1) = v0 + (v0 - grid_lb)
+  !v1 = v(1) - grid_lb
+  !v2 = grid_rb - grid_lb
+  !call inc_ratio(v1,v2,m,alpha)
+  !do i=2,m
+  !  v(i) = v(0)+(v(1)-v(0))*(1-alpha**real(i))/(1-alpha)
+  !end do
+
   write(*,*) 'left boundary: ',v(0)
   write(*,*) 'first node: ',v(1)
   write(*,*) 'right boundary: ',v(m)
