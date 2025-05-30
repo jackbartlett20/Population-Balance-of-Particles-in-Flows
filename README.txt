@@ -1,5 +1,5 @@
-This is a fork of https://github.com/CambridgeUniversityPress/Population-Balance-of-Particles-in-Flows.
-20/05/2025
+This forked repository is obsolete. It has been replaced with https://github.com/jackbartlett20/PBContrails.
+30/05/2025
 
 CPMOD - Chemistry and Particulates MODelling
 Version 1.0
